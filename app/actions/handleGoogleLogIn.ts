@@ -9,7 +9,7 @@ export async function handleGoogleLogIn() {
     const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-            redirectTo: `${process.env.NEXTAUTH_URL? process.env.NEXTAUTH_URL : 'https://personal-portfolio-rosy-five.vercel.app'}/api/auth/callback/google`,
+            redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`, 
             queryParams: {
                 access_type: 'offline',
                 prompt: 'consent',
