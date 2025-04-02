@@ -1,6 +1,7 @@
-"use server"
+'use server'
 
 import { createClient } from '@/supabase/server'
+import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
 export async function handleGoogleLogIn() {
@@ -8,7 +9,7 @@ export async function handleGoogleLogIn() {
     const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-            redirectTo: 'http://localhost:3000/auth/callback',
+            redirectTo: 'http://localhost:3000/auth/callback', 
             queryParams: {
                 access_type: 'offline',
                 prompt: 'consent',
@@ -16,7 +17,7 @@ export async function handleGoogleLogIn() {
         },
     })
     if (data.url) {
-        redirect(data.url) // use the redirect API for your server framework
+        redirect(data.url)
     }
     if (error) {
         console.log(error)
@@ -27,6 +28,8 @@ export async function handleGoogleLogIn() {
         if (user) {
             const { id, email, created_at } = user
             console.log(id, email, created_at)
+            revalidatePath('/account', 'layout')
+            redirect('/account')
         }
     }
 }

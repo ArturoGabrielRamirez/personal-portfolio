@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-export default function ErrorPage() {
+export default function NotFound() {
     return (
         <div className='flex flex-col items-center justify-center h-screen bg-gray-800'>
             <h1 className='text-4xl font-bold text-red-600'>Oops...nothing to see here.</h1>
