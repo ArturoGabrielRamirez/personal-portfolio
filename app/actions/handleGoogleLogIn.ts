@@ -9,7 +9,7 @@ export async function handleGoogleLogIn() {
     const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-            redirectTo: 'http://localhost:3000/auth/callback', 
+            redirectTo: `${process.env.NEXTAUTH_URL}/api/auth/callback/google`,
             queryParams: {
                 access_type: 'offline',
                 prompt: 'consent',
