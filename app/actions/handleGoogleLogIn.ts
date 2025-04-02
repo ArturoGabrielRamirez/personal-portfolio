@@ -4,25 +4,42 @@ import { createClient } from '@/supabase/server'
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 
+const getURL = () => {
+    let url =
+        process?.env?.NEXTAUTH_URL ??
+        process?.env?.NEXT_PUBLIC_VERCEL_URL ??
+        'http://localhost:3000/'
+
+    url = url.startsWith('http') ? url : `https://${url}`
+
+    url = url.endsWith('/') ? url : `${url}/`
+    return url
+}
+
 export async function handleGoogleLogIn() {
     const supabase = await createClient()
+    const redirectUrl = `${getURL()}auth/callback`;
+
     const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-            redirectTo: `${process.env.NEXTAUTH_URL}/auth/callback`, 
+            redirectTo: redirectUrl,
             queryParams: {
                 access_type: 'offline',
                 prompt: 'consent',
             },
         },
     })
-    if (data.url) {
-        redirect(data.url)
-    }
+
     if (error) {
         console.log(error)
-        return
+        return;
     }
+
+    if (data?.url) {
+        redirect(data.url);
+    }
+
     if (data) {
         const { data: { user } } = await supabase.auth.getUser()
         if (user) {

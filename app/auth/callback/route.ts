@@ -17,7 +17,7 @@ export async function GET(request: Request) {
       if (isLocalEnv) {
         return NextResponse.redirect(`${origin}${next}/account`)
       } else if (forwardedHost) {
-        return NextResponse.redirect(`https://${forwardedHost}${next}`)
+        return NextResponse.redirect(`https://${forwardedHost}${next}/account`)
       } else {
         return NextResponse.redirect(`${origin}${next}`)
       }
