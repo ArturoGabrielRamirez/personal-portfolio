@@ -6,7 +6,6 @@ import Divider from '../Visuals/Divider'
 export default function NavBar({ user }: { user: User | null }) {
     return (
         <nav className='flex items-center justify-between h-full w-full px-2 text-white bg-gray-800'>
-            {/*  <div className='h-full'> */}
             <Link href='/' className='text-2xl font-bold'><h1 className='p-2 animate-slide-in-down'>Personal Portfolio</h1></Link>
             <>
                 {!user ? (
@@ -27,7 +26,6 @@ export default function NavBar({ user }: { user: User | null }) {
                     </div>
                 )}
             </>
-            {/*  </div> */}
         </nav>
     )
 }
