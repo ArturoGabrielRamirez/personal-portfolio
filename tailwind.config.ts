@@ -1,4 +1,5 @@
-import type { Config } from "tailwindcss";
+import type { Config } from "tailwindcss"
+import animation from "./tailwind.config.animations"
 
 export default {
   content: [
@@ -12,6 +13,8 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+    
+      ...animation
     },
   },
   plugins: [],

@@ -10,13 +10,13 @@ export default async function SignupPage() {
     const formPasswordClasses = `flex flex-col gap-3 sm:row-start-2 sm:col-start-1 sm:min-w-full sm:justify-center`
 
     return (
-        <GridForms  className={pageLayoutClasses}>
+        <GridForms className={pageLayoutClasses}>
             <Title title='Sign Up' />
-            <Form formAction={handleSignup} contentButton='Sign Up' className={formPasswordClasses}>
-                <Label htmlFor='email' text='Email:' className='pl-2' />
-                <Input required={true} htmlFor='email' />
-                <Label htmlFor='password' text='Password:' className='pl-2' />
-                <Input required={true} htmlFor='password' />
+            <Form formAction={handleSignup} contentButton='Sign Up' className={formPasswordClasses} animationDir='left'>
+                <Label htmlFor='email' text='Email:' className='pl-2' animationDir='left' />
+                <Input required={true} htmlFor='email' animationDir='left' />
+                <Label htmlFor='password' text='Password:' className='pl-2' animationDir='left' />
+                <Input required={true} htmlFor='password' animationDir='left' />
             </Form>
         </GridForms>
     )

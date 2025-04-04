@@ -11,7 +11,7 @@ export default async function AccountPage() {
 
   return (
     <GridForms className='grid grid-rows-[30px_1fr_1fr] grid-cols-[1fr] sm:grid-rows-[40px_1fr] sm:grid-cols-[1fr_1px_1fr] grow items-center justify-center bg-white dark:bg-gray-800 sm:gap-x-20 sm:p-8'>
-      <Title title='Account' className='' />
+      <Title title='Account' className='animate-slide-in-left' />
       <AccountForm user={user} />
     </GridForms>
   )

@@ -37,9 +37,11 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-dvh antialiased min-w-[270px]`}
       >
-        <main className='flex flex-col min-h-dvh'>
+        <main className='flex flex-col min-h-dvh overflow-y-hidden overflow-x-hidden'>
           <NavBar user={user} />
-          {children}
+         
+            {children}
+          
         </main>
       </body>
     </html>

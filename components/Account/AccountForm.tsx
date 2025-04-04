@@ -9,13 +9,13 @@ export default function AccountForm({ user }: { user: User | null }) {
     return (
         <>
             <div className='flex flex-col items-center justify-center gap-2 bg-white dark:bg-gray-800 sm:col-start-1 sm:row-start-2'>
-                <div className='text-gray-500'>Logged in as {user?.email}</div>
-                {user?.user_metadata.name && <div className='text-gray-500'>Welcome: {user?.user_metadata.name}</div>}
-                {user?.identities?.[0]?.provider === 'google' && <Image src={user?.user_metadata?.picture} alt='User avatar' width={70} height={70} className='rounded-full' />}
+                <div className='text-gray-500 animate-slide-in-left'>Logged in as {user?.email}</div>
+                {user?.user_metadata.name && <div className='text-gray-500 animate-slide-in-left'>Welcome: {user?.user_metadata.name}</div>}
+                {user?.identities?.[0]?.provider === 'google' && <Image src={user?.user_metadata?.picture} alt='User avatar' width={70} height={70} className='rounded-full animate-slide-in-left' />}
             </div>
-            <Divider />
+            <Divider className='h-2/3 animate-slide-in-up'/>
 
-            <Form action='/auth/signout' method='post' contentButton='Sign out' className='gap-2 py-2 grow sm:row-start-2' />
+            <Form action='/auth/signout' method='post' contentButton='Sign out' className='gap-2 py-2 grow sm:row-start-2' animationDir='right' />
         </>
     )
 

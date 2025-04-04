@@ -1,7 +1,7 @@
-const Label = ({ htmlFor, text, className }: { htmlFor: string, text: string, className?: string }) => {
+const Label = ({ htmlFor, text, className, animationDir }: { htmlFor: string, text: string, className?: string, animationDir: string }) => {
     
     return (
-        <label htmlFor={htmlFor} className={`text-sm text-gray-400 ${className}`}>
+        <label htmlFor={htmlFor} className={`text-sm text-gray-400 animate-slide-in-${animationDir} ${className}`}>
             {text}
         </label>
     )
